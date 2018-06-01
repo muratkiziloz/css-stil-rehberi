@@ -33,8 +33,8 @@ Bir kural bildirimi, bir grup seçiciye verilen addır. Örneğin:
 
 ```css
 .listing {
-	font-size: 18px;
-	line-height: 1.2;
+  font-size: 18px;
+  line-height: 1.2;
 }
 ```
 
@@ -44,11 +44,11 @@ Bir seçici, DOM ağacındaki elementlerin tanımlı özellikler tarafından bi�
 
 ```css
 .my-element-class {
-	/* ... */
+  /* ... */
 }
 
 [aria-hidden] {
-	/* ... */
+  /* ... */
 }
 ```
 
@@ -58,8 +58,8 @@ Bir seçicinin stillerini içerir. Propertyler, key-value çiftleridir (*Örneğ
 
 ```css
 /* herhangi bir seçici */ {
-	background: #f1f1f1;
-	color: #333;
+  background: #f1f1f1;
+  color: #333;
 }
 ```
 
@@ -83,13 +83,13 @@ Bir seçicinin stillerini içerir. Propertyler, key-value çiftleridir (*Örneğ
 
 ```css
 .avatar{
-	border-radius:50%;
-	border:2px solid white; }
+  border-radius:50%;
+  border:2px solid white; }
 .no, .nope, .not_good {
-	// ...
+  // ...
 }
 #lol-no {
-	// ...
+  // ...
 }
 ```
 
@@ -97,8 +97,8 @@ Bir seçicinin stillerini içerir. Propertyler, key-value çiftleridir (*Örneğ
 
 ```css
 .avatar {
-	border-radius: 50%;
-	border: 2px solid white;
+  border-radius: 50%;
+  border: 2px solid white;
 }
 
 .one,
@@ -192,7 +192,7 @@ Border'ın olmadığı durumlarda `none` yerine `0` kullanın.
 
 ```css
 .foo {
-	border: none;
+  border: none;
 }
 ```
 
@@ -200,7 +200,7 @@ Border'ın olmadığı durumlarda `none` yerine `0` kullanın.
 
 ```css
 .foo {
-	border: 0;
+  border: 0;
 }
 ```
 **[⬆ yukarı çık](#%C4%B0%C3%A7indekiler)**
@@ -220,9 +220,9 @@ Tüm standart propertyleri, `@include` veya nested bir seçici olmayan herhangi 
 
 ```scss
 .btn-green {
-	background: green;
-	font-weight: bold;
-	// ...
+  background: green;
+  font-weight: bold;
+  // ...
 }
 ```
 
@@ -232,10 +232,10 @@ Tüm standart propertyleri, `@include` veya nested bir seçici olmayan herhangi 
 
 ```scss
 .btn-green {
-	background: green;
-	font-weight: bold;
-	@include transition(background 0.5s ease);
-	// ...
+  background: green;
+  font-weight: bold;
+  @include transition(background 0.5s ease);
+  // ...
 }
 ```
 
@@ -245,13 +245,13 @@ Kural bildirimleriniz ve iç içe geçmiş seçiciler ile bitişik iç içe geç
 
 ```scss
 .btn {
-	background: green;
-	font-weight: bold;
-	@include transition(background 0.5s ease);
+  background: green;
+  font-weight: bold;
+  @include transition(background 0.5s ease);
 
-	.icon {
-		margin-right: 10px;
-	}
+  .icon {
+    margin-right: 10px;
+  }
 }
 ```
 
