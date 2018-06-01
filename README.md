@@ -1,104 +1,104 @@
-# Airbnb CSS / Sass Styleguide
+# Airbnb CSS/Sass Rehberi
 
-*A mostly reasonable approach to CSS and Sass*
+*CSS ve Sass için makul bi yaklaşım*
 
-## Table of Contents
+## İçindekiler
 
-1. [Terminology](#terminology)
-    - [Rule Declaration](#rule-declaration)
-    - [Selectors](#selectors)
-    - [Properties](#properties)
-1. [CSS](#css)
-    - [Formatting](#formatting)
-    - [Comments](#comments)
-    - [OOCSS and BEM](#oocss-and-bem)
-    - [ID Selectors](#id-selectors)
-    - [JavaScript hooks](#javascript-hooks)
+1. [Terminoloji](#terminoloji)
+    - [Kural Bildirimi](#kural-bildirimi)
+    - [Seçiciler](#seçiciler)
+    - [Propertyler](#propertyler)
+2. [CSS](#css)
+    - [Biçimlendirme](#biçimlendirme)
+    - [Yorum Satırları](#yorum-satırları)
+    - [OOCSS ve BEM](#oocss-ve-bem)
+    - [ID Seçiciler](#id-seçiciler)
+    - [JavaScript kancası](#javascript-kancası)
     - [Border](#border)
-1. [Sass](#sass)
+3. [Sass](#sass)
     - [Syntax](#syntax)
-    - [Ordering](#ordering-of-property-declarations)
-    - [Variables](#variables)
-    - [Mixins](#mixins)
-    - [Extend directive](#extend-directive)
-    - [Nested selectors](#nested-selectors)
-1. [Translation](#translation)
-1. [License](#license)
+    - [Düzen](#duzen)
+    - [Değişkenler](#değişkenler)
+    - [Mixin](#mixin)
+    - [Extend](#extend)
+    - [İç içe geçmiş seçiciler](#İç-içe-geçmiş-seçiciler)
+4. [Çeviri](#Çeviri)
+5. [Lisans](#lisans)
 
-## Terminology
+## Terminoloji
 
-### Rule declaration
+### Kural Bildirimi
 
-A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties. Here's an example:
+Bir kural bildirimi, bir grup seçiciye verilen addır. Örneğin:
 
 ```css
 .listing {
-  font-size: 18px;
-  line-height: 1.2;
+	font-size: 18px;
+	line-height: 1.2;
 }
 ```
 
-### Selectors
+### Seçiciler
 
-In a rule declaration, “selectors” are the bits that determine which elements in the DOM tree will be styled by the defined properties. Selectors can match HTML elements, as well as an element's class, ID, or any of its attributes. Here are some examples of selectors:
+Bir seçici, DOM ağacındaki elementlerin tanımlı özellikler tarafından biçimlendirilmesini sağlar. Seçiciler, HTML elementlerinin yanı sıra sınıfı, id'yi yada property ile eşleşebilir. İşte bazı örnekler:
 
 ```css
 .my-element-class {
-  /* ... */
+	/* ... */
 }
 
 [aria-hidden] {
-  /* ... */
+	/* ... */
 }
 ```
 
-### Properties
+### Propertyler
 
-Finally, properties are what give the selected elements of a rule declaration their style. Properties are key-value pairs, and a rule declaration can contain one or more property declarations. Property declarations look like this:
+Bir seçicinin stillerini içerir. Propertyler, key-value çiftleridir (*Örneğin color: turquoise;*). Propertyler şu şekilde görünür:
 
 ```css
-/* some selector */ {
-  background: #f1f1f1;
-  color: #333;
+/* herhangi bir seçici */ {
+	background: #f1f1f1;
+	color: #333;
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ yukarı çık](#%C4%B0%C3%A7indekiler)**
 
 ## CSS
 
-### Formatting
+### Biçimlendirme
 
-* Use soft tabs (2 spaces) for indentation
-* Prefer dashes over camelCasing in class names.
-  - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
-* Do not use ID selectors
-* When using multiple selectors in a rule declaration, give each selector its own line.
-* Put a space before the opening brace `{` in rule declarations
-* In properties, put a space after, but not before, the `:` character.
-* Put closing braces `}` of rule declarations on a new line
-* Put blank lines between rule declarations
+* Girintiler için 2 boşluk kullanın
+* Class adlarında `camelCasing` yerine tire (`-`) kullanın.
+  - BEM kullanıyorsanız PascalCasing kullanabilirsiniz. ([OOCSS ve BEM](#oocss-ve-bem)).
+* ID seçici kullanmayın
+* Birden çok seçici kullandığınızda, her seçiciye yeni satır verin
+* `{` parantezinden önce bir boşluk bırakın
+* `:`dan önce boşluk kullanmayın fakat sonrasında bir boşluk kullanın
+* `}` parantezinden sonra yeni bir satıra geçin
+* Kural bildirimleri arasına bir boş satır kullanın
 
-**Bad**
+**Kötü Kod**
 
 ```css
 .avatar{
-    border-radius:50%;
-    border:2px solid white; }
+	border-radius:50%;
+	border:2px solid white; }
 .no, .nope, .not_good {
-    // ...
+	// ...
 }
 #lol-no {
-  // ...
+	// ...
 }
 ```
 
-**Good**
+**İyi Kod**
 
 ```css
 .avatar {
-  border-radius: 50%;
-  border: 2px solid white;
+	border-radius: 50%;
+	border: 2px solid white;
 }
 
 .one,
@@ -108,36 +108,36 @@ Finally, properties are what give the selected elements of a rule declaration th
 }
 ```
 
-### Comments
+### Yorum Satırları
 
-* Prefer line comments (`//` in Sass-land) to block comments.
-* Prefer comments on their own line. Avoid end-of-line comments.
-* Write detailed comments for code that isn't self-documenting:
-  - Uses of z-index
-  - Compatibility or browser-specific hacks
+* Tek satır yorumlar için `//` tercih edin.
+* Yorum satırlarını yeni satırda yazın. Satır sonuna yazmaktan kaçının.
+* Kendi kendini belgeleyen kodlar için ayrıntılı yorumlar yazın:
+   - z-index kullanımı
+   - Tarayıcı uyumluluğu veya tarayıcıya özgü hackler
 
-### OOCSS and BEM
+### OOCSS ve BEM
 
-We encourage some combination of OOCSS and BEM for these reasons:
+OOCSS ve BEM kombinasyonlarını teşvik etme nedenlerimiz şunlar:
 
-  * It helps create clear, strict relationships between CSS and HTML
-  * It helps us create reusable, composable components
-  * It allows for less nesting and lower specificity
-  * It helps in building scalable stylesheets
+  * CSS ve HTML arasında net, sıkı ilişkiler oluşturulmasına yardımcı olur
+  * Yeniden kullanılabilir, bileşilebilir componentler oluşturmamıza yardımcı olur
+  * Daha az yuvalanma (nesting) ve daha düşük özgüllük sağlar
+  * Ölçeklenebilir stil sayfalarının oluşturulmasına yardımcı olur
 
-**OOCSS**, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”: reusable, repeatable snippets that can be used independently throughout a website.
+**OOCSS** veya `Obje Yönelimli CSS`, stil sayfalarınızı `objeler` topluluğu olarak düşünmenizi teşvik eden CSS yazmak için bir yaklaşımdır; bir web sitesinde bağımsız olarak kullanılabilen yeniden kullanılabilir, tekrarlanabilir snippetlerdir.
 
-  * Nicole Sullivan's [OOCSS wiki](https://github.com/stubbornella/oocss/wiki)
-  * Smashing Magazine's [Introduction to OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
+  * Nicole Sullivan'ın [OOCSS wiki](https://github.com/stubbornella/oocss/wiki) hakkında makalesi
+  * Smashing Magazine'ın [OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/) hakkında makalesi
 
-**BEM**, or “Block-Element-Modifier”, is a _naming convention_ for classes in HTML and CSS. It was originally developed by Yandex with large codebases and scalability in mind, and can serve as a solid set of guidelines for implementing OOCSS.
+**BEM** veya `Block-Element-Modifier`, HTML ve CSS classları için bir `_naming` kuralıdır. Orijinal olarak Yandex tarafından büyük kod esasları ve ölçeklenebilirlik göz önünde bulundurularak geliştirildi ve OOCSS'yi uygulamak için sağlam bir dizi kural olarak kullanılabilir.
 
-  * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
-  * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+  * CSS Trick'in [BEM 101](https://css-tricks.com/bem-101/) hakkında makalesi
+  * Harry Roberts'in [BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) hakkında makalesi
 
-We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React). Underscores and dashes are still used for modifiers and children.
+Özellikle componentlerle birleştirildiğinde (<i>örneğin React</i>) iyi çalışan PascalCased `blokları` ile BEM'in bir varyantını öneriyoruz. Alt çizgiler ve kısa çizgiler hala değiştiriciler ve childlar için kullanılır.
 
-**Example**
+**Örnek**
 
 ```jsx
 // ListingCard.jsx
@@ -164,140 +164,140 @@ function ListingCard() {
 .ListingCard__content { }
 ```
 
-  * `.ListingCard` is the “block” and represents the higher-level component
-  * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
-  * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
+  * `.ListingCard` `block`tur ve en yüksek seviyeli componenti temsil eder
+  * `.ListingCard__title` `element`tir ve bloğu bir bütün olarak oluşturmaya yardımcı olan `.ListingCard`ın bir soyunu temsil eder.
+  * `.ListingCard--featured`  `modifier`dır ve `.ListingCard` bloğunda farklı bir durumu veya varyasyonu temsil eder.
 
-### ID selectors
+### ID Seçiciler
 
-While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID selectors introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your rule declarations, and they are not reusable.
+CSS'te id seçiciler kullanılabilsede, kullanmaktan kaçınmalıyız. Id seçiciler kural bildirimine gereksiz derecede yüksek bir [özgüllük](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) seviyesi getirir ve tekrar kullanılamazlar.
 
-For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
+Bu konu hakkında daha fazla bilgi için, [CSS Sihirbazının makalesini](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) okuyun.
 
-### JavaScript hooks
+### JavaScript kancası
 
-Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
+CSS ve JavaScriptinizde aynı classa bağlanmaktan kaçının. Başka bir developer class adında değişiklik yaptığında çalışan sistemi bozabilir. (<i>o class javascriptte kullanılıyor olabilir.</i>)
 
-We recommend creating JavaScript-specific classes to bind to, prefixed with `.js-`:
+JavaScript ile class'ları seçmek için, js'ye özgü `.js-` ön ekli classlar oluşturmanızı öneririz. Bu refactoring sırasında boşa harcanan süreyi en aza indirecektir.
 
 ```html
-<button class="btn btn-primary js-request-to-book">Request to Book</button>
+<button class="btn btn-primary js-kitap-istemek">Kitap İstemek</button>
 ```
 
 ### Border
 
-Use `0` instead of `none` to specify that a style has no border.
+Border'ın olmadığı durumlarda `none` yerine `0` kullanın.
 
-**Bad**
-
-```css
-.foo {
-  border: none;
-}
-```
-
-**Good**
+**Kötü Kod**
 
 ```css
 .foo {
-  border: 0;
+	border: none;
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+
+**İyi Kod**
+
+```css
+.foo {
+	border: 0;
+}
+```
+**[⬆ yukarı çık](#%C4%B0%C3%A7indekiler)**
 
 ## Sass
 
 ### Syntax
 
-* Use the `.scss` syntax, never the original `.sass` syntax
-* Order your regular CSS and `@include` declarations logically (see below)
+* `.scss` syntaxı kullanın, orijinal `.sass` syntaxını kullanmayın.
+* CSS ve `@include`ları düzenli kullanın (aşağı bakın).
 
-### Ordering of property declarations
+### Düzen
 
-1. Property declarations
+1. Property bildirimleri
 
-    List all standard property declarations, anything that isn't an `@include` or a nested selector.
+Tüm standart propertyleri, `@include` veya nested bir seçici olmayan herhangi bir şeyi listeleyin.
 
-    ```scss
-    .btn-green {
-      background: green;
-      font-weight: bold;
-      // ...
-    }
-    ```
+```scss
+.btn-green {
+	background: green;
+	font-weight: bold;
+	// ...
+}
+```
 
-2. `@include` declarations
+2. `@include` bildirimleri
 
-    Grouping `@include`s at the end makes it easier to read the entire selector.
+`@include`ların propertylerin sonunda olması, tüm seçiciyi okumayı kolaylaştırır.
 
-    ```scss
-    .btn-green {
-      background: green;
-      font-weight: bold;
-      @include transition(background 0.5s ease);
-      // ...
-    }
-    ```
+```scss
+.btn-green {
+	background: green;
+	font-weight: bold;
+	@include transition(background 0.5s ease);
+	// ...
+}
+```
 
-3. Nested selectors
+3. İç içe seçiciler
 
-    Nested selectors, _if necessary_, go last, and nothing goes after them. Add whitespace between your rule declarations and nested selectors, as well as between adjacent nested selectors. Apply the same guidelines as above to your nested selectors.
+Kural bildirimleriniz ve iç içe geçmiş seçiciler ile bitişik iç içe geçmiş seçiciler arasında boşluk ekleyin. İç içe geçmiş seçicilerinize yukarıdaki aynı yönergeleri uygulayın.
 
-    ```scss
-    .btn {
-      background: green;
-      font-weight: bold;
-      @include transition(background 0.5s ease);
+```scss
+.btn {
+	background: green;
+	font-weight: bold;
+	@include transition(background 0.5s ease);
 
-      .icon {
-        margin-right: 10px;
-      }
-    }
-    ```
+	.icon {
+		margin-right: 10px;
+	}
+}
+```
 
-### Variables
+### Değişkenler
 
-Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
+`camelCased` veya `snake_cased` değişken adları yerine `dash-cased` değişken isimlerini tercih edin (örneğin, `$my-variable`). Aynı dosya içinde yalnızca bir alt çizgi (örneğin, `$_my-variable`) ile kullanılması amaçlanan değişken adlarını önek kabul etmek mümkündür.
 
-### Mixins
+### Mixin
 
-Mixins should be used to DRY up your code, add clarity, or abstract complexity--in much the same way as well-named functions. Mixins that accept no arguments can be useful for this, but note that if you are not compressing your payload (e.g. gzip), this may contribute to unnecessary code duplication in the resulting styles.
+Temiz ve daha anlaşılır kod yazımı için iyi adlandırılmış mixinler kullanılmalıdır. Ancak css kodlarını gereksiz yere çoğaltmayacağınızdan emin olun.
 
-### Extend directive
+### Extend
 
-`@extend` should be avoided because it has unintuitive and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts). Gzipping should handle most of the savings you would have gained by using `@extend`, and you can DRY up your stylesheets nicely with mixins.
+`@extend`ten kaçınılmalıdır, çünkü özellikle iç içe geçmiş seçicilerle kullanıldığında beklenmedik ve potansiyel olarak tehlikeli davranışları vardır. Üst düzey placeholder seçicilerini genişletmek bile, seçici sırasının daha sonra değişmesiyle sorunlara neden olabilir. Gzipping, `@extend` kullanarak elde edeceğiniz tasarrufların çoğunu üstlenmeli ve stil sayfalarınızı mixinlerle güzelce canlandırabilirsiniz.
 
-### Nested selectors
+### İç içe geçmiş seçiciler
 
-**Do not nest selectors more than three levels deep!**
+**İç içe seçicileri en fazla 3 seviye kullanın!**
 
 ```scss
 .page-container {
   .content {
     .profile {
-      // STOP!
+      // DUR!
     }
   }
 }
 ```
 
-When selectors become this long, you're likely writing CSS that is:
+Seçiciler bu kadar uzun olduğunda, CSS'iniz:
 
-* Strongly coupled to the HTML (fragile) *—OR—*
-* Overly specific (powerful) *—OR—*
-* Not reusable
+* HTML'e çok sıkı bağlanır
+* Aşırı spesifiktir
+* Yeniden kullanılamaz, refactoringi zor hale gelir
 
+Tekrar: **Hiçbir zaman ID seçiciyi iç içe seçicilerde kullanmayın!**
 
-Again: **never nest ID selectors!**
+Bir ID seçiciyi ilk etapta kullanmanız gerekiyorsa, asla iç içe seçicilerde kullanılmamalıdır. Bunu yaptığınızda, kodunuzu tekrar gözden geçirmeniz veya bu kadar güçlü özgüllüğün neden gerekli olduğunu bulmanız gerekir. İyi oluşturulmuş bir HTML ve CSS yazıyorsanız, bunu **asla** yapmanıza gerek yoktur.
 
-If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
+**[⬆ yukarı çık](#%C4%B0%C3%A7indekiler)**
 
-**[⬆ back to top](#table-of-contents)**
+## Çeviri
 
-## Translation
+Bu rehberin diğer dillerde çeviriside mevcuttur:
 
-  This style guide is also available in other languages:
-
+  - ![en](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/England.png) **English**: [airbnb/css](https://github.com/airbnb/css)
   - ![id](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Indonesia.png) **Bahasa Indonesia**: [mazipan/css-style-guide](https://github.com/mazipan/css-style-guide)
   - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese (Traditional)**: [ArvinH/css-style-guide](https://github.com/ArvinH/css-style-guide)
   - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [Zhangjd/css-style-guide](https://github.com/Zhangjd/css-style-guide)
@@ -310,11 +310,10 @@ If you must use an ID selector in the first place (and you should really try not
   - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [ismamz/guia-de-estilo-css](https://github.com/ismamz/guia-de-estilo-css)
   - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Vietnam.png) **Vietnamese**: [trungk18/css-style-guide](https://github.com/trungk18/css-style-guide)
   - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**: [antoniofull/linee-guida-css](https://github.com/antoniofull/linee-guida-css)
-  - ![de](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Germany.png) **German**: [tderflinger/css-styleguide](https://github.com/tderflinger/css-styleguide)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ yukarı çık](#%C4%B0%C3%A7indekiler)**
 
-## License
+## Lisans
 
 (The MIT License)
 
@@ -326,4 +325,4 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ yukarı çık](#%C4%B0%C3%A7indekiler)**
